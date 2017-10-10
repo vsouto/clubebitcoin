@@ -63,7 +63,7 @@
     <script type="text/javascript" language="javascript">
         $(function() {
 
-            /* Start Carousel */
+            /* Start Carousel
             $('#featured-posts').carouFredSel({
                 auto: true,
                 prev: '#prev2',

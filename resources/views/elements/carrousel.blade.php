@@ -6,7 +6,11 @@
             @foreach ($posts as $post)
                 <li class="{{ $count % 3 == 0? 'last' : 'first' }} carousel-item">
                     <div class="post-margin">
-                        <h6><a href="{{ route('posts.show',['slug' => $post->slug]) }}">{{ substr($post->title, 0, 20) }}</a></h6>
+                        @if (strlen($post->title) > 20)
+                            <h6><a href="{{ route('posts.show',['slug' => $post->slug]) }}" class="small-title">{{ $post->title }}</a></h6>
+                        @else
+                            <h6><a href="{{ route('posts.show',['slug' => $post->slug]) }}">{{ substr($post->title, 0, 20) }}</a></h6>
+                        @endif
                         <span><i class="fa fa-clock-o"></i> {{ $post->created_at->toFormattedDateString() }}</span>
                     </div>
 
