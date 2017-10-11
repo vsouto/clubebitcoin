@@ -89,7 +89,6 @@
         </div>
         <!-- End Posts Container -->
 
-        @include('elements.sidebar')
 
         <div class="clear"></div>
 

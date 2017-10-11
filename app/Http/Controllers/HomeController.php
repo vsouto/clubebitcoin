@@ -27,6 +27,7 @@ class HomeController extends Controller
     {
         $posts = Post::limit(6)
             ->orderBy('created_at','DESC')
+            ->with('category')
             ->get();
 
         $categories = Category::get();

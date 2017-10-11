@@ -18,3 +18,8 @@ function getTags($tags) {
 
     return $result;
 }
+
+function isActive( $param ){
+
+    return true;
+}

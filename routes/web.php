@@ -17,10 +17,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('sobre', 'HomeController@sobre')->name('sobre');
 
 // Posts
+Route::get('posts/', ['as' => 'posts.index', 'uses' => 'PostsController@index']);
+Route::get('events/', ['as' => 'events.index', 'uses' => 'EventsController@index']);
 Route::get('posts/{slug}', ['as' => 'posts.show', 'uses' => 'PostsController@show']);
 
 // Categories
 Route::get('categories/{slug}', ['as' => 'categories.show', 'uses' => 'CategoriesController@show']);
+
+// Users
+Route::get('users/{slug}', ['as' => 'users.show', 'uses' => 'UsersController@show']);
 
 Auth::routes();
 

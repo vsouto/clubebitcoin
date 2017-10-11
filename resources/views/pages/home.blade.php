@@ -1,104 +1,258 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
+        <!-- begin #content -->
+<div id="content" class="content">
+    <!-- begin breadcrumb -->
+    <ol class="breadcrumb pull-right">
+        <li><a href="javascript:;">Home</a></li>
+    </ol>
+    <!-- end breadcrumb -->
+    <!-- begin page-header -->
+    <h1 class="page-header">Dashboard <small></small></h1>
+    <!-- end page-header -->
 
-
-    @include('elements.carrousel')
-
-    <!-- Start Main Container -->
-    <div class="container zerogrid">
-
-        <!-- Start Posts Container -->
-        <div class="col-2-3" id="post-container">
-            <div class="wrap-col">
-
-                @foreach ($posts as $post)
-                    <!-- Start Post Item -->
-                    <div class="post">
-                        <div class="post-margin">
-
-                            <div class="post-avatar">
-                                <div class="avatar-frame"></div>
-                                <img alt='' src="{{ asset('img/user.png') }}" class='avatar avatar-70 photo' height='70' width='70' />                </div>
-
-                            <h4 class="post-title"><a href="{{ route('posts.show', ['slug' => $post->slug]) }}">{{ $post->title }}</a></h4>
-                            <ul class="post-status">
-                                <li><i class="fa fa-clock-o"></i>{{ $post->created_at->diffForHumans() }}</li>
-                                <li><i class="fa fa-folder-open-o"></i>
-                                    @if ($post->category)
-                                        <a href="{{ route('categories.show', ['slug' => $post->category->slug]) }}" title="View all posts in Illustration" rel="category">
-                                            {{ $post->category->name }}
-                                        </a>
-                                    @else
-                                        Geral
-                                    @endif
-                                </li>
-                                <li><i class="fa fa-comment-o"></i>No Comments</li>
-                            </ul>
-                            <div class="clear"></div>
-                        </div>
-
-                        <div class="featured-image">
-                            <img src="{{ asset('storage/' .$post->image) }}" class="attachment-post-standard "  />
-                            <div class="post-icon">
-                                    <span class="fa-stack fa-lg">
-                                      <i class="fa fa-circle fa-stack-2x"></i>
-                                      <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                    </span>
-                            </div>
-                        </div>
-
-                        <div class="post-margin">
-                            <p>{!! $post->body !!}</p>
-                        </div>
-
-                        <ul class="post-social">
-                            <li><a href="#" class="social-network-link">
-                                    <i class="fa fa-facebook"></i></a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="social-network-link">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="social-network-link">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="social-network-link">
-                                    <i class="fa fa-linkedin"></i>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{ route('posts.show',['slug' => $post->slug]) }}" class="readmore">Read More <i class="fa fa-arrow-circle-o-right"></i></a>
-                            </li>
-                        </ul>
-
-                        <div class="clear"></div>
-                    </div>
-                    <!-- End Post Item -->
-                @endforeach
-
-
-                <!-- Start Pagination -->
-                <div class="spacing-20"></div><ul class="pagination"><li class='current'><a href=''>1</a></li><li><a href='http://demo.themesmarts.com/euclid/?paged=2'>2</a></li><li><a href='http://demo.themesmarts.com/euclid/?paged=3'>3</a></li><li><a href='http://demo.themesmarts.com/euclid/?paged=4'>4</a></li></ul>
-                <!-- End Pagination -->
-
-                <div class="clear"></div>
+    <!-- begin row -->
+    <div class="row">
+        <!-- begin col-3 -->
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-green">
+                <div class="stats-icon"><i class="fa fa-child"></i></div>
+                <div class="stats-info">
+                    <h4>Bitcoin</h4>
+                    <p id="stats_total_players">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </p>
+                </div>
+                <div class="stats-link">
+                    <a href="{{ route('home') }}">Ver Lista <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
             </div>
         </div>
-        <!-- End Posts Container -->
+        <!-- end col-3 -->
+        <!-- begin col-3 -->
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-blue">
+                <div class="stats-icon"><i class="fa fa-users"></i></div>
+                <div class="stats-info">
+                    <h4>Ethereum</h4>
+                    <p id="stats_total_teams">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </p>
+                </div>
+                <div class="stats-link">
+                    <a href="{{ route('home') }}">Ver Lista <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- end col-3 -->
+        <!-- begin col-3 -->
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-purple">
+                <div class="stats-icon"><i class="fa fa-trophy"></i></div>
+                <div class="stats-info">
+                    <h4>Ripple</h4>
+                    <p id="stats_events">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </p>
+                </div>
+                <div class="stats-link">
+                    <a href="{{ route('home') }}">Ver Lista <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- end col-3 -->
+        <!-- begin col-3 -->
+        <div class="col-md-3 col-sm-6">
+            <div class="widget widget-stats bg-red">
+                <div class="stats-icon"><i class="fa fa-retweet"></i></div>
+                <div class="stats-info">
+                    <h4>Dash</h4>
+                    <p id="stats_total_updates"><i class="fa fa-refresh fa-spin"></i></p>
+                </div>
+                <div class="stats-link">
+                    <a href="{{ route('home') }}">Ver Todas <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- end col-3 -->
+    </div>
+    <!-- end row -->
 
-        @include('elements.sidebar')
+    <!-- begin row -->
+    <div class="row">
+        <!-- begin col-8 -->
+        <div class="col-md-8">
 
-        <div class="clear"></div>
+            <ul class="nav nav-tabs nav-tabs-inverse nav-justified nav-justified-mobile" data-sortable-id="index-1">
+                <li class="active"><a href="#latest-post" data-toggle="tab"><i class="fa fa-comment-o m-r-5"></i> <span class="hidden-xs">Últimas Notícias</span></a></li>
+                <li class=""><a href="#purchase" data-toggle="tab"><i class="fa fa-trophy m-r-5"></i> <span class="hidden-xs">Próximos Eventos</span></a></li>
+            </ul>
+            <div class="tab-content" data-sortable-id="index-2">
+                <div class="tab-pane fade active in" id="latest-post">
+                    <div class="height-sm" data-scrollbar="true">
+                        <ul class="media-list media-list-with-divider">
+                            @foreach ($posts as $post)
+                                <li class="media media-lg" style="min-height: 90px;">
+                                    <a href="{{ route('posts.show', [$post->slug]) }}" class="pull-left">
+                                        <img src="{{ asset('storage/' .$post->image) }}" alt="" class="media-object" width="172px"
+                                             style="max-height: 172px" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">
+                                            <a href="{{ route('posts.show',[$post->slug]) }}">{{ $post->title }}</a>
+                                        </h4>
+                                        {{ $post->excerpt }}
+                                        <div class="text text-right text-muted text-align-reverse" style="margin-right: 4px">
+                                            <label class="label label-{{ $post->category->name }}">{{ $post->category->name }}</label>
+                                            <br>
+                                            {{ $post->created_at->diffForHumans() }}
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <a href="{{ route('home') }}" class="text-inverse">Ver Todas</a>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="purchase">
+                    <div class="height-sm" data-scrollbar="true">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Início</th>
+                                <th></th>
+                                <th>Evento</th>
+                                <th>Região</th>
+                                <th>Descrição</th>
+                                <th>Stream</th>
+                                <th>Link</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-chart with-sidebar bg-black">
+                <div class="widget-chart-content">
+                    <h4 class="chart-title">
+                        Live Streams
+                        <small>acompanhe os melhores jogadores brasileiros</small>
+                    </h4>
+                    <div id="visitors-line-chart" class="morris-inverse" style="height: 260px; position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                        <ul class="registered-users-list clearfix">
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-chart-sidebar bg-black-darker">
+                    <div class="chart-number">
+                        512
+                        <small>total seguidores</small>
+                    </div>
+                    <div id="visitors-donut-chart" style="height: 160px">
+                    </div>
+                    <ul class="chart-legend">
+                        <li><i class="fa fa-circle-o fa-fw text-success m-r-5"></i> 12 <span>Live Streams</span></li>
+                        <li><i class="fa fa-circle-o fa-fw text-info m-r-5"></i> <span><a href="{{ route('home') }}">Ver Todos</a></span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- end col-8 -->
+        <!-- begin col-4 -->
+        <div class="col-md-4">
+            <div class="panel panel-inverse" data-sortable-id="index-4">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title">Últimas atualizações</h4>
+                </div>
+                <div class="panel-body p-t-0">
+                    <table class="table table-valign-middle m-b-0">
+                        <thead>
+                        <tr>
+                            <th>Moeda</th>
+                            <th>Valor</th>
+                            <th>%</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="panel-footer text-center">
+                        <a href="{{ route('home') }}" class="text-inverse">Ver Todos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- calendar -->
+            <div class="panel panel-inverse" data-sortable-id="index-5">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title">Calendário</h4>
+                </div>
+                <div class="panel-body">
+                    <div id="calendar"></div>
+                    <br>
+                    <div class="panel-footer text-center">
+                        <a href="{{ route('home') }}" class="text-inverse">Ver Eventos</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- end col-4 -->
 
     </div>
-    <!-- End Main Container -->
+    <!-- end row -->
+
+
+</div>
+<!-- end #content -->
+@endsection
+
+@section('scripts')
+    @include('elements.scripts')
+    <script src="{{ asset('assets/plugins/isotope/jquery.isotope.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/lightbox/js/lightbox-2.6.min.js') }}"></script>
+
+    <script src="{{ asset('js/moment/moment.js') }}"></script>
+    <script src="{{ asset('js/fullcalendar/fullcalendar.min.js') }}"></script>
+    <link href="{{ asset('css/fullcalendar/fullcalendar.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/fullcalendar/fullcalendar.print.css') }}" rel="stylesheet" type="text/css">
+
+    <script src="{{ asset('assets/js/gallery.demo.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            App.init();
+            Gallery.init();
+
+            getEvents();
+
+            getStats('players');
+            getStats('teams');
+            getStats('updates');
+            getStats('events');
+        });
+    </script>
 @endsection

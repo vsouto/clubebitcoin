@@ -14,4 +14,13 @@ class Post extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    /**
+     * Get the phone record associated with the user.
+     */
+    public function author()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }
