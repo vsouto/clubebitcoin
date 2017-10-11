@@ -27,6 +27,9 @@ Route::get('categories/{slug}', ['as' => 'categories.show', 'uses' => 'Categorie
 // Users
 Route::get('users/{slug}', ['as' => 'users.show', 'uses' => 'UsersController@show']);
 
+// Tests
+Route::get('test', ['as' => 'test', 'uses' => 'CoinsController@test']);
+
 Auth::routes();
 
 Route::group(['prefix' => 'admin'], function () {

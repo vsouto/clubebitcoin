@@ -35,15 +35,16 @@
         <ul class="nav">
             <li class="nav-header">Navigation</li>
             <li class="has-sub {{ isActive('home') }}">
-                <a href="javascript:;">
-                    <b class="caret pull-right"></b>
+                <a href="{{ route('home') }}">
                     <i class="fa fa-laptop"></i>
                     <span>Dashboard</span>
                 </a>
-                <ul class="sub-menu">
-                    <li class="{{ isActive('home') }}"><a href="{{ route('home') }}">Dashboard</a></li>
-                    <li class="{{ isActive('posts') }}"><a href="{{ route('posts.index') }}">Notícias</a></li>
-                </ul>
+            </li>
+            <li class="{{ isActive('posts') }}">
+                <a href="{{ route('posts.index') }}">
+                    <i class="fa fa-newspaper-o"></i>
+                    Notícias
+                </a>
             </li>
             <li class="{{ isActive('events') }}">
                 <a href="{{ route('events.index') }}">

@@ -23,3 +23,8 @@ function isActive( $param ){
 
     return true;
 }
+
+function getCategoryColor() {
+
+    return '';
+}

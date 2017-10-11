@@ -14,22 +14,25 @@
 
     <!-- begin row -->
     <div class="row">
-        <!-- begin col-3 -->
-        <div class="col-md-3 col-sm-6">
-            <div class="widget widget-stats bg-green">
-                <div class="stats-icon"><i class="fa fa-child"></i></div>
-                <div class="stats-info">
-                    <h4>Bitcoin</h4>
-                    <p id="stats_total_players">
-                        <i class="fa fa-refresh fa-spin"></i>
-                    </p>
-                </div>
-                <div class="stats-link">
-                    <a href="{{ route('home') }}">Ver Lista <i class="fa fa-arrow-circle-o-right"></i></a>
+        @foreach($quotes as $quote)
+            <!-- begin col-3 -->
+            <div class="col-md-3 col-sm-6">
+                <div class="widget widget-stats bg-{{ str_replace('/','',$quote->getName()) }}">
+                    <div class="stats-icon"><i class="fa fa-child"></i></div>
+                    <div class="stats-info">
+                        <h4>{{ $quote->getName() }}</h4>
+                        <p id="stats_total_players">
+                            {{--<i class="fa fa-refresh fa-spin"></i>--}}
+                            U$ {{ number_format($quote->getLastTradePrice(), 2) }}
+                        </p>
+                    </div>
+                    <div class="stats-link">
+                        <a href="{{ route('home') }}">Ver Lista <i class="fa fa-arrow-circle-o-right"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- end col-3 -->
+            <!-- end col-3 -->
+        @endforeach{{--
         <!-- begin col-3 -->
         <div class="col-md-3 col-sm-6">
             <div class="widget widget-stats bg-blue">
@@ -75,7 +78,7 @@
                 </div>
             </div>
         </div>
-        <!-- end col-3 -->
+        <!-- end col-3 -->--}}
     </div>
     <!-- end row -->
 

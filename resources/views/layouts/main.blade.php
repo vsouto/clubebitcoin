@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- end: Mobile Specific -->
 
-
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
@@ -17,6 +16,7 @@
     <link href="{{ asset('assets/css/style.min.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('assets/css/style-responsive.min.css') }}" rel="stylesheet" type="text/css" >
     <link href="{{ asset('assets/css/theme/default.css') }}" rel="stylesheet" type="text/css" id="theme">
+
     <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
@@ -53,6 +53,9 @@
     <script src="{{ asset('assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
+    <title>Clube Bitcoin</title>
+
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -69,7 +72,7 @@
                 <!-- begin mobile sidebar expand / collapse button -->
                 <div class="navbar-header">
                     <div style="float:left; min-width: 400px">
-                        <a href="{{ route('home') }}" class="navbar-brand" style="padding-left: 26px; padding-top: 2px">
+                        <a href="{{ route('home') }}" class="navbar-brand" style="padding-left: 26px; padding-top: 6px">
                             <div style="float:left; padding-right: 6px"><img src="{{ asset('img/clube-bitcoin.png') }}" width="266px"></div>
                             <div></div>
                         </a>

@@ -13,7 +13,8 @@
         "laravel/tinker": "~1.0",
         "cviebrock/eloquent-sluggable": "4.3",
         "tcg/voyager": "^1.0",
-        "artesaos/seotools": "^0.10.0"
+        "artesaos/seotools": "^0.10.0",
+        "scheb/yahoo-finance-api": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

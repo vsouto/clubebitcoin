@@ -6,6 +6,9 @@ use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 
+use GuzzleHttp\Client;
+use Scheb\YahooFinanceApi\ApiClientFactory;
+
 class HomeController extends Controller
 {
     /**
@@ -32,7 +35,9 @@ class HomeController extends Controller
 
         $categories = Category::get();
 
-        return view('pages.home', compact('posts','categories'));
+        $quotes = $this->getQuotes();
+
+        return view('pages.home', compact('posts','categories','quotes'));
     }
 
     public function sobre()
@@ -41,5 +46,26 @@ class HomeController extends Controller
         $categories = Category::get();
 
         return view('pages.sobre', compact('posts','categories'));
+    }
+
+    public function getQuotes()
+    {
+        // Create a new client from the factory
+        $client = ApiClientFactory::createApiClient();
+
+        // Or use your own Guzzle client and pass it in
+        $options = [/*...*/];
+        $guzzleClient = new Client($options);
+        $client = ApiClientFactory::createApiClient($guzzleClient);
+
+        $quotes = [];
+
+        array_push($quotes,$client->getQuote("ETHUSD=X"));
+
+        array_push($quotes,$client->getQuote("BTCUSD=X"));
+
+        array_push($quotes,$client->getQuote("BRL=X"));
+
+        return $quotes;
     }
 }
