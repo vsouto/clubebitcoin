@@ -50,22 +50,28 @@ class HomeController extends Controller
 
     public function getQuotes()
     {
-        // Create a new client from the factory
-        $client = ApiClientFactory::createApiClient();
+        try {
+            // Create a new client from the factory
+            $client = ApiClientFactory::createApiClient();
 
-        // Or use your own Guzzle client and pass it in
-        $options = [/*...*/];
-        $guzzleClient = new Client($options);
-        $client = ApiClientFactory::createApiClient($guzzleClient);
+            // Or use your own Guzzle client and pass it in
+            $options = [/*...*/];
+            $guzzleClient = new Client($options);
+            $client = ApiClientFactory::createApiClient($guzzleClient);
 
-        $quotes = [];
+            $quotes = [];
 
-        array_push($quotes,$client->getQuote("ETHUSD=X"));
+            array_push($quotes,$client->getQuote("ETHUSD=X"));
 
-        array_push($quotes,$client->getQuote("BTCUSD=X"));
+            array_push($quotes,$client->getQuote("BTCUSD=X"));
 
-        array_push($quotes,$client->getQuote("BRL=X"));
+            array_push($quotes,$client->getQuote("BRL=X"));
 
-        return $quotes;
+            return $quotes;
+        }
+        catch (\Exception $e) {
+
+            return $e->getMessage();
+        }
     }
 }

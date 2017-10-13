@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-        <!-- begin #content -->
+    <!-- begin #content -->
 <div id="content" class="content">
     <!-- begin breadcrumb -->
     <ol class="breadcrumb pull-right">
@@ -32,53 +32,8 @@
                 </div>
             </div>
             <!-- end col-3 -->
-        @endforeach{{--
-        <!-- begin col-3 -->
-        <div class="col-md-3 col-sm-6">
-            <div class="widget widget-stats bg-blue">
-                <div class="stats-icon"><i class="fa fa-users"></i></div>
-                <div class="stats-info">
-                    <h4>Ethereum</h4>
-                    <p id="stats_total_teams">
-                        <i class="fa fa-refresh fa-spin"></i>
-                    </p>
-                </div>
-                <div class="stats-link">
-                    <a href="{{ route('home') }}">Ver Lista <i class="fa fa-arrow-circle-o-right"></i></a>
-                </div>
-            </div>
-        </div>
-        <!-- end col-3 -->
-        <!-- begin col-3 -->
-        <div class="col-md-3 col-sm-6">
-            <div class="widget widget-stats bg-purple">
-                <div class="stats-icon"><i class="fa fa-trophy"></i></div>
-                <div class="stats-info">
-                    <h4>Ripple</h4>
-                    <p id="stats_events">
-                        <i class="fa fa-refresh fa-spin"></i>
-                    </p>
-                </div>
-                <div class="stats-link">
-                    <a href="{{ route('home') }}">Ver Lista <i class="fa fa-arrow-circle-o-right"></i></a>
-                </div>
-            </div>
-        </div>
-        <!-- end col-3 -->
-        <!-- begin col-3 -->
-        <div class="col-md-3 col-sm-6">
-            <div class="widget widget-stats bg-red">
-                <div class="stats-icon"><i class="fa fa-retweet"></i></div>
-                <div class="stats-info">
-                    <h4>Dash</h4>
-                    <p id="stats_total_updates"><i class="fa fa-refresh fa-spin"></i></p>
-                </div>
-                <div class="stats-link">
-                    <a href="{{ route('home') }}">Ver Todas <i class="fa fa-arrow-circle-o-right"></i></a>
-                </div>
-            </div>
-        </div>
-        <!-- end col-3 -->--}}
+        @endforeach
+
     </div>
     <!-- end row -->
 
@@ -250,12 +205,6 @@
             App.init();
             Gallery.init();
 
-            getEvents();
-
-            getStats('players');
-            getStats('teams');
-            getStats('updates');
-            getStats('events');
         });
     </script>
 @endsection
