@@ -14,26 +14,27 @@
 
     <!-- begin row -->
     <div class="row">
-        @foreach($quotes as $quote)
-            <!-- begin col-3 -->
-            <div class="col-md-3 col-sm-6">
-                <div class="widget widget-stats bg-{{ str_replace('/','',$quote->getName()) }}">
-                    <div class="stats-icon"><i class="fa fa-child"></i></div>
-                    <div class="stats-info">
-                        <h4>{{ $quote->getName() }}</h4>
-                        <p id="stats_total_players">
-                            {{--<i class="fa fa-refresh fa-spin"></i>--}}
-                            U$ {{ number_format($quote->getLastTradePrice(), 2) }}
-                        </p>
-                    </div>
-                    <div class="stats-link">
-                        <a href="{{ route('home') }}">Ver Lista <i class="fa fa-arrow-circle-o-right"></i></a>
+        @if ($quotes && !empty($quotes))
+            @foreach($quotes as $quote)
+                <!-- begin col-3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget widget-stats bg-{{ str_replace('/','',$quote->getName()) }}">
+                        <div class="stats-icon"><i class="fa fa-child"></i></div>
+                        <div class="stats-info">
+                            <h4>{{ $quote->getName() }}</h4>
+                            <p id="stats_total_players">
+                                {{--<i class="fa fa-refresh fa-spin"></i>--}}
+                                U$ {{ number_format($quote->getLastTradePrice(), 2) }}
+                            </p>
+                        </div>
+                        <div class="stats-link">
+                            <a href="{{ route('home') }}">Ver Lista <i class="fa fa-arrow-circle-o-right"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- end col-3 -->
-        @endforeach
-
+                <!-- end col-3 -->
+            @endforeach
+        @endif
     </div>
     <!-- end row -->
 
@@ -97,32 +98,6 @@
                 </div>
             </div>
 
-            <div class="widget-chart with-sidebar bg-black">
-                <div class="widget-chart-content">
-                    <h4 class="chart-title">
-                        Live Streams
-                        <small>acompanhe os melhores jogadores brasileiros</small>
-                    </h4>
-                    <div id="visitors-line-chart" class="morris-inverse" style="height: 260px; position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                        <ul class="registered-users-list clearfix">
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="widget-chart-sidebar bg-black-darker">
-                    <div class="chart-number">
-                        512
-                        <small>total seguidores</small>
-                    </div>
-                    <div id="visitors-donut-chart" style="height: 160px">
-                    </div>
-                    <ul class="chart-legend">
-                        <li><i class="fa fa-circle-o fa-fw text-success m-r-5"></i> 12 <span>Live Streams</span></li>
-                        <li><i class="fa fa-circle-o fa-fw text-info m-r-5"></i> <span><a href="{{ route('home') }}">Ver Todos</a></span></li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
         <!-- end col-8 -->
         <!-- begin col-4 -->
@@ -175,7 +150,6 @@
                     </div>
                 </div>
             </div>
-
 
 
         </div>

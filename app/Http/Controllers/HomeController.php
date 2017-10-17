@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Event;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,12 @@ class HomeController extends Controller
         $categories = Category::get();
 
         $quotes = $this->getQuotes();
+
+
+        // Events later than today
+        $events = Event::orderBy('starts','ASC')
+            ->where('starts','>=', DB::raw('curdate()'))
+            ->get();
 
         return view('pages.home', compact('posts','categories','quotes'));
     }
