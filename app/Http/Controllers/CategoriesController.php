@@ -11,7 +11,7 @@ class CategoriesController extends Controller
     //
     public function show($slug)
     {
-        $categories = Category::get();
+        $category = Category::where('slug',$slug)->first();
 
         $posts = Post::
             join('categories', 'categories.id', '=', 'posts.category_id')
@@ -19,6 +19,6 @@ class CategoriesController extends Controller
             ->orderBy('posts.created_at','DESC')
             ->get();
 
-        return view('categories.show',compact('posts','categories'));
+        return view('categories.show',compact('posts','category'));
     }
 }

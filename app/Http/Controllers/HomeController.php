@@ -8,6 +8,7 @@ use App\Post;
 use Illuminate\Http\Request;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\DB;
 use Scheb\YahooFinanceApi\ApiClientFactory;
 
 class HomeController extends Controller
@@ -38,13 +39,14 @@ class HomeController extends Controller
 
         $quotes = $this->getQuotes();
 
-
         // Events later than today
         $events = Event::orderBy('starts','ASC')
             ->where('starts','>=', DB::raw('curdate()'))
             ->get();
 
-        return view('pages.home', compact('posts','categories','quotes'));
+        $videos = Post::where('category_id','8')->take(8)->get();
+
+        return view('pages.home', compact('posts','categories','quotes', 'events','videos'));
     }
 
     public function sobre()
@@ -74,9 +76,14 @@ class HomeController extends Controller
 
             array_push($quotes,$client->getQuote("BRL=X"));
 
+            array_push($quotes,$client->getQuote("AMZN"));
+
             return $quotes;
         }
         catch (\Exception $e) {
+
+            if ($e->getCode() == 400)
+                return false;
 
             return $e->getMessage();
         }

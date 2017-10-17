@@ -40,16 +40,43 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            <li class="{{ isActive('posts') }}">
-                <a href="{{ route('posts.index') }}">
-                    <i class="fa fa-newspaper-o"></i>
-                    Notícias
-                </a>
-            </li>
+
+            @if (Auth::check())
+                <li class="{{ isActive('posts') }} has-sub expand">
+                    <a href="javascript:;">
+                        <b class="caret pull-right"></b>
+                        <i class="fa fa-laptop"></i>
+                        <span>Notícias</span>
+                    </a>
+                    <ul class="sub-menu" style="display: block;">
+                        <li><a href="{{ route('posts.index') }}">Notícias</a></li>
+                        <li><a href="{{ route('posts.create') }}">Postar Notícia</a></li>
+                    </ul>
+                </li>
+            @else
+                <li class="{{ isActive('posts') }}">
+                    <a href="{{ route('posts.index') }}">
+                        <i class="fa fa-newspaper-o"></i>
+                        Notícias
+                    </a>
+                </li>
+            @endif
             <li class="{{ isActive('events') }}">
                 <a href="{{ route('events.index') }}">
-                    <i class="fa fa-trophy"></i>
+                    <i class="fa fa-calendar"></i>
                     <span>Eventos</span>
+                </a>
+            </li>
+            <li class="{{ isActive('categories') }}">
+                <a href="{{ route('categories.show', ['category' => 'videos']) }}">
+                    <i class="fa fa-caret-square-o-right"></i>
+                    <span>Vídeos</span>
+                </a>
+            </li>
+            <li class="{{ isActive('categories') }}">
+                <a href="{{ route('categories.show', ['category' => 'tutoriais']) }}">
+                    <i class="fa fa-bullhorn"></i>
+                    <span>Tutoriais</span>
                 </a>
             </li>
             <!-- begin sidebar minify button -->

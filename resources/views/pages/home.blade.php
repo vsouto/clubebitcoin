@@ -14,11 +14,11 @@
 
     <!-- begin row -->
     <div class="row">
-        @if ($quotes && !empty($quotes))
+        @if ($quotes)
             @foreach($quotes as $quote)
                 <!-- begin col-3 -->
                 <div class="col-md-3 col-sm-6">
-                    <div class="widget widget-stats bg-{{ str_replace('/','',$quote->getName()) }}">
+                    <div class="widget widget-stats bg-{{ preg_replace('/[^\p{L}\p{N}\s]/u', '', $quote->getSymbol()) }}">
                         <div class="stats-icon"><i class="fa fa-child"></i></div>
                         <div class="stats-info">
                             <h4>{{ $quote->getName() }}</h4>
@@ -122,7 +122,15 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                            @if ($quotes)
+                                @foreach ($quotes as $quote)
+                                    <tr>
+                                        <th>{{ $quote->getName() }}</th>
+                                        <th>U$ {{ number_format($quote->getLastTradePrice(), 2) }}</th>
+                                        <th>{{ $quote->getChange() }}</th>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                     <div class="panel-footer text-center">
@@ -130,7 +138,7 @@
                     </div>
                 </div>
             </div>
-
+{{--
             <!-- calendar -->
             <div class="panel panel-inverse" data-sortable-id="index-5">
                 <div class="panel-heading">
@@ -149,6 +157,32 @@
                         <a href="{{ route('home') }}" class="text-inverse">Ver Eventos</a>
                     </div>
                 </div>
+            </div>--}}
+
+            <!-- videos -->
+            <div class="panel panel-inverse" data-sortable-id="index-5">
+                <!-- begin panel -->
+                <div class="panel panel-inverse" data-sortable-id="index-4">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Últimos Vídeos <span class="pull-right label label-success"></span></h4>
+                    </div>
+                    <ul class="registered-users-list clearfix">
+                        @foreach ($videos as $video)
+                            <li>
+                                <a href="{{ route('posts.show',[$video->slug]) }}"><img src="{{ asset('storage/'. $video->image) }}" alt=""></a>
+                                <h4 class="username text-ellipsis">
+                                    {{ $video->title }}
+                                    <small>{{ $video->author->name }}</small>
+                                </h4>
+                            </li>
+                        @endforeach
+
+                    </ul>
+                    <div class="panel-footer text-center">
+                        <a href="javascript:;" class="text-inverse">View All</a>
+                    </div>
+                </div>
+                <!-- end panel -->
             </div>
 
 

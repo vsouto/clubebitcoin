@@ -18,8 +18,10 @@ Route::get('sobre', 'HomeController@sobre')->name('sobre');
 
 // Posts
 Route::get('posts/', ['as' => 'posts.index', 'uses' => 'PostsController@index']);
+Route::get('posts/create', ['as' => 'posts.create', 'uses' => 'PostsController@create']);
 Route::get('events/', ['as' => 'events.index', 'uses' => 'EventsController@index']);
 Route::get('posts/{slug}', ['as' => 'posts.show', 'uses' => 'PostsController@show']);
+
 
 // Categories
 Route::get('categories/{slug}', ['as' => 'categories.show', 'uses' => 'CategoriesController@show']);

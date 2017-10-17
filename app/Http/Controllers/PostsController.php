@@ -20,7 +20,6 @@ class PostsController extends Controller
             ->get();
 
         return view('posts.index',compact('posts','categories'));
-
     }
 
     //
@@ -33,5 +32,12 @@ class PostsController extends Controller
         $categories = Category::get();
 
         return view('posts.show',compact('post','posts','categories'));
+    }
+
+    public function create()
+    {
+
+
+        return view('posts.create');
     }
 }
